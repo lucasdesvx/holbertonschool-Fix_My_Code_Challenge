@@ -1,22 +1,23 @@
-#!/usr/bin/env ruby
+#!/usr/bin/node
+/*
+    Print a square with the character #
+    
+    The size of the square must be the first argument 
+    of the program.
+*/
 
-numbers = []
-strings = []
+if (process.argv.length <= 2) {
+    process.stderr.write("Missing argument\n");
+    process.stderr.write("Usage: ./1-print_square.js <size>\n");
+    process.stderr.write("Example: ./1-print_square.js 8\n");
+    process.exit(1);
+}
 
-# Separate arguments into numbers and strings
-ARGV.each do |arg|
-  begin
-    numbers << Integer(arg)
-  rescue ArgumentError
-    strings << arg
-  end
-end
+const size = parseInt(process.argv[2], 10);
 
-# Sort numbers numerically and strings alphabetically
-sorted_numbers = numbers.sort
-sorted_strings = strings.sort
-
-# Print the sorted results
-(sorted_numbers + sorted_strings).each do |arg|
-  puts arg
-end
+for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+        process.stdout.write("#");
+    }
+    process.stdout.write("\n");
+}
